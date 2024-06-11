@@ -36,7 +36,7 @@ def display_left_column_content(page):
             st.markdown("**Age:** 25-35")
             st.markdown("**Risk Score:** 2 (CHR) 🔻")
             st.markdown("**Debt to Income:** 40% 🔻")
-            st.markdown("**Prior Use:** 50%")
+            st.markdown("**Prioritise:** 50%")
             st.progress(0.5)
 
             # Sentiment Analysis
