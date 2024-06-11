@@ -3,6 +3,9 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
+# Adjust the size of all text elements.
+plt.rcParams['font.size'] = 10
+
 # Set page config
 st.set_page_config(page_title="Customer Debt Collection Analysis", layout="wide")
 
@@ -27,27 +30,27 @@ def display_left_column_content(page):
     if page == "customer_view":
         # Left Column for Customer Information and Metrics
         with left_column:
-            st.title("Customer Information")
-            st.text("Name: Adrian")
-            st.text("PHNO: 82865958")
-            st.text("Age: 25-35")
+            # st.title("Customer Information")
+            st.markdown("**Name:** Adrian")
+            st.markdown("**PHNO:** 82865958")
+            st.markdown("**Age:** 25-35")
             st.markdown("**Risk Score:** 2 (CHR) 🔻")
             st.markdown("**Debt to Income:** 40% 🔻")
-            st.text("Prior Use:")
+            st.markdown("**Prior Use:** 50%")
             st.progress(0.5)
 
             # Sentiment Analysis
             st.markdown("## Sentiment Analysis")
             col1, col2, col3 = st.columns(3)
-            col1.metric("Positive", "40%", "")
-            col2.metric("Neutral", "50%", "")
-            col3.metric("Negative", "10%", "")
+            col1.metric("Positive", "40%", "-2% MoM")
+            col2.metric("Neutral", "50%", "+1% MoM")
+            col3.metric("Negative", "10%", "+1% MoM")
 
     elif page == "agent_view":
         # Left Column for Agent Profile and Metrics
         with left_column:
             # st.title("WALNUT")
-            st.image("logo/logo.png", width=100)
+            # st.image("logo/logo.png", width=100)
             st.markdown("**Agent name:** Oliver Gun")
             st.markdown("**Employee ID:** 123A")
 
@@ -127,7 +130,7 @@ with main_column:
         }
         df = pd.DataFrame(call_data)
 
-        fig, ax1 = plt.subplots(figsize=(6, 3))
+        fig, ax1 = plt.subplots(figsize=(4, 2))
 
         ax2 = ax1.twinx()
         ax1.plot(df["Month"], df["Category 1"], 'g-')
@@ -138,9 +141,9 @@ with main_column:
         ax2.bar(df["Month"], df["Duration 2"], alpha=0.3, color='blue', width=0.4, align='center')
         ax2.bar(df["Month"], df["Duration 3"], alpha=0.3, color='red', width=0.4, align='center')
 
-        ax1.set_xlabel('Month')
-        ax1.set_ylabel('Num of Calls', color='black')
-        ax2.set_ylabel('Duration (mins)', color='black')
+        ax1.set_xlabel('Month', fontsize=6)
+        ax1.set_ylabel('Num of Calls', color='black', fontsize=6)
+        ax2.set_ylabel('Duration (mins)', color='black', fontsize=6)
 
         st.pyplot(fig)
 
